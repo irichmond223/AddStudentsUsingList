@@ -1,0 +1,11 @@
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\obj\Debug\netcoreapp3.0\AddStudentsUsingList.csprojAssemblyReference.cache
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\obj\Debug\netcoreapp3.0\AddStudentsUsingList.AssemblyInfoInputs.cache
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\obj\Debug\netcoreapp3.0\AddStudentsUsingList.AssemblyInfo.cs
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.exe
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.deps.json
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.runtimeconfig.json
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.runtimeconfig.dev.json
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.dll
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\bin\Debug\netcoreapp3.0\AddStudentsUsingList.pdb
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\obj\Debug\netcoreapp3.0\AddStudentsUsingList.dll
+C:\Users\ilona\source\repos\C#\Arrays\Lab9\AddStudentsUsingList\AddStudentsUsingList\obj\Debug\netcoreapp3.0\AddStudentsUsingList.pdb
