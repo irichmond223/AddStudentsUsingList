@@ -7,9 +7,7 @@ namespace AddStudentsUsingList
     {
         static void Main(string[] args)
         {
-
             Arrays();
-
         }
         public static void Arrays()
         {
@@ -20,18 +18,19 @@ namespace AddStudentsUsingList
 
             Console.WriteLine("Welcome to our C# class.  ");
 
-            //Loop through list to display names, for example: 1. Ilona
-            for (int i = 0; i < names.Count; i++)
-            {
-                Console.WriteLine($"{i + 1}. {names[i]}");
-            }
-
             //Loop through all data to choose a different student by entering a number
             bool playAgain = true;
             while (playAgain)
             {
+                //Loop through list to display names, for example: 1. Ilona
+                for (int i = 0; i < names.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {names[i]}");
+                }
+
                 Console.WriteLine("Which student would you like to learn more about? (enter in numerical format):");
                 string stringUserInput = Console.ReadLine();
+
                 //Validates all the data to ensure the format is correct, within a range of a list, and no blanks allowed
                 try
                 {
@@ -80,6 +79,7 @@ namespace AddStudentsUsingList
                                 moreAboutStudent = false;
                                 playAgain = true;
                             }
+  
                             bool addNameAgain = true;
 
                             if (userContinue == "add")
@@ -103,43 +103,45 @@ namespace AddStudentsUsingList
                                     int userNumber = int.Parse(userNum);
                                     favoritenumber.Add(userNumber);
 
+                                    addNameAgain = false;
+                                    moreAboutStudent = false;
 
                                     if (userName == "" || userFood == "" || userhometown == "" || userName == "")
                                     {
                                         Console.WriteLine("Cannot be empty. Try again.");
-                                        
+
                                         playAgain = false;
                                         moreAboutStudent = false;
                                         addNameAgain = true;
                                     }
+
+                                    //To display the loop of newly updated list for verification
+                                    for (int i = 0; i < names.Count; i++)
+                                    {
+                                        Console.WriteLine($"{i + 1}. {names[i]}");
+                                    }
                                 }
                             }
-
-
-                            //To display the loop of newly updated list for verification
-                            for (int i = 0; i < names.Count; i++)
+                            else if (userContinue == "no")
                             {
-                                Console.WriteLine($"{i + 1}. {names[i]}");
-                            }
-                        }
 
-                        else
-                        {
-                            //If dont want to know about any other students or to add
-                            Console.WriteLine("Goodbye");
-                            playAgain = false;
-                            moreAboutStudent = false;
-                        }
+                                //If dont want to know about any other students or to add
+                                Console.WriteLine("Goodbye");
+
+                                playAgain = false;
+                                moreAboutStudent = false;
+                            } 
+                        }  
                     }
-
                 }
-                catch (FormatException) //Used when the user typed in in a wrong format, in this case in words instead of numbers.
+                catch (FormatException) //Used when the user typed in in a wrong format
                 {
-                    Console.WriteLine("Enter numbers only. Please try again.");
+                    Console.WriteLine("Enter in the correct format. Please try again.");
                 }
                 catch (IndexOutOfRangeException) //Used when the number exceedes 1-10 range.
                 {
                     Console.WriteLine("That student does not exist. Please try again.");
+                    playAgain = true;
                 }
                 catch (ArgumentNullException)
                 {
