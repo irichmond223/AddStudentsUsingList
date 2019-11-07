@@ -8,13 +8,89 @@ namespace AddStudentsUsingList
         static void Main(string[] args)
         {
             Arrays();
+            
         }
+
+        public static string AddStudentName(List<string> names)
+        {
+            string userName = "";
+            do
+            {
+                Console.WriteLine("Enter first name: ");
+                userName = Console.ReadLine().ToLower();
+                names.Add(userName);
+            
+            if (string.IsNullOrEmpty(userName))
+            {
+                Console.WriteLine("Empty input, please try again.");
+            }
+        } while (string.IsNullOrEmpty(userName));
+          return userName;
+        }
+
+        public static string AddStudentFood(List<string> food)
+        {
+            string userFood = "";
+            do
+            {
+                Console.WriteLine("Enter favorite food: ");
+                userFood = Console.ReadLine().ToLower();
+                food.Add(userFood);
+
+                if (string.IsNullOrEmpty(userFood))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+
+            } while (string.IsNullOrEmpty(userFood));
+            return userFood;
+        }
+
+        public static string AddStudentHomeTown(List<string> hometown)
+        {
+            string userhometown = "";
+
+            do
+            {
+                Console.WriteLine("Enter hometown: ");
+                userhometown = Console.ReadLine().ToLower();
+                hometown.Add(userhometown);
+
+                if (string.IsNullOrEmpty(userhometown))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+
+            } while (string.IsNullOrEmpty(userhometown));
+              return userhometown;
+        }
+
+        public static string AddStudentFavoriteColor(List<string> favoritecolor)
+        {
+            string userColor = "";
+
+            do
+            {
+                Console.WriteLine("Enter favorite number: ");
+                userColor = Console.ReadLine().ToLower();
+                favoritecolor.Add(userColor);
+
+                if (string.IsNullOrEmpty(userColor))
+                {
+                    Console.WriteLine("Empty input, please try again.");
+                }
+
+            } while (string.IsNullOrEmpty(userColor));
+            return userColor;
+        }
+            
+        
         public static void Arrays()
         {
             List<string> names = new List<string>() { "Ilona", "Michael", "Viktoriya", "Sarah", "Angela", "Maria", "Scott", "David", "Victor", "Ivan" };
             List<string> food = new List<string>() { "Tacos", "Potato Salad", "Borsch", "Ice Cream", "Meat Loaf", "Soup", "Steak", "Beef Stew", "Pizza", "Donuts" };
             List<string> hometown = new List<string>() { "Kiev", "Dnipro", "Lugansk", "Detroit", "Ann Arbor", "Grand Rapids", "Las Vegas", "New York", "Chicago", "Los Angeles" };
-            List<int> favoritenumber = new List<int>() { 5, 1, 20, 10, 3, 20, 6, 10, 7, 8 };
+            List<string> favoritecolor = new List<string>() { "Blue","Green","Purple","Red","Black", "Orange", "Yellow", "Pink","Grey","White" };
 
             Console.WriteLine("Welcome to our C# class.  ");
 
@@ -42,12 +118,12 @@ namespace AddStudentsUsingList
                     while (moreAboutStudent)
                     {
                         Console.WriteLine($"Student {stringUserInput} is {names[intUserInput]}. Would you like to know about {names[intUserInput]} (enter yes or no)?");
-                        string knowMoreAboutStudent = Console.ReadLine();
+                        string knowMoreAboutStudent = Console.ReadLine().ToLower();
 
                         if (knowMoreAboutStudent == "yes")
                         {
-                            Console.WriteLine("Enter input from the following options below: \n hometown \n favorite food \n \n favorite number");
-                            string userInputOptions = Console.ReadLine();
+                            Console.WriteLine("Enter input from the following options below: \nhometown \nfavorite food \nfavorite color");
+                            string userInputOptions = Console.ReadLine().ToLower();
 
                             //Nested if else statements only applies if answered yes to get to know about a user
                             if (userInputOptions == "hometown")
@@ -58,9 +134,9 @@ namespace AddStudentsUsingList
                             {
                                 Console.WriteLine($"{names[intUserInput]} likes {food[intUserInput]}.  ");
                             }
-                            else if (userInputOptions == "favorite number")
+                            else if (userInputOptions == "favorite color")
                             {
-                                Console.WriteLine($"{names[intUserInput]} likes {favoritenumber[intUserInput]}.  ");
+                                Console.WriteLine($"{names[intUserInput]} likes {favoritecolor[intUserInput]}.  ");
                             }
                             else
                             {
@@ -72,7 +148,7 @@ namespace AddStudentsUsingList
                             //If answered no and the user dont want to get to know the same user,
                             //they can choose another student or add a new student to the end of the list
                             Console.WriteLine("Would you like to know more about other students? (yes or no) \n Or would you like to add a new student? enter (add)");
-                            string userContinue = Console.ReadLine();
+                            string userContinue = Console.ReadLine().ToLower();
 
                             if (userContinue == "yes")
                             {
@@ -86,34 +162,13 @@ namespace AddStudentsUsingList
                             {
                                 while (addNameAgain)
                                 {
-                                    Console.WriteLine("Enter first name: ");
-                                    string userName = Console.ReadLine();
-                                    names.Add(userName);
-
-                                    Console.WriteLine("Enter favorite food: ");
-                                    string userFood = Console.ReadLine();
-                                    food.Add(userFood);
-
-                                    Console.WriteLine("Enter hometown: ");
-                                    string userhometown = Console.ReadLine();
-                                    hometown.Add(userhometown);
-
-                                    Console.WriteLine("Enter favorite number: ");
-                                    string userNum = Console.ReadLine();
-                                    int userNumber = int.Parse(userNum);
-                                    favoritenumber.Add(userNumber);
+                                    AddStudentName(names);
+                                    AddStudentFood(food);
+                                    AddStudentHomeTown(hometown);
+                                    AddStudentFavoriteColor(favoritecolor);
 
                                     addNameAgain = false;
                                     moreAboutStudent = false;
-
-                                    if (userName == "" || userFood == "" || userhometown == "" || userName == "")
-                                    {
-                                        Console.WriteLine("Cannot be empty. Try again.");
-
-                                        playAgain = false;
-                                        moreAboutStudent = false;
-                                        addNameAgain = true;
-                                    }
 
                                     //To display the loop of newly updated list for verification
                                     for (int i = 0; i < names.Count; i++)
@@ -147,9 +202,14 @@ namespace AddStudentsUsingList
                 {
                     Console.WriteLine("Value cannot be empty. Try again.");
                 }
+                catch (Exception)
+                {
+                    Console.WriteLine("Overload. Try again.");
+                }
             }
             return;
         }
     }
  }
 
+//Repeating method
