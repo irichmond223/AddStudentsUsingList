@@ -24,7 +24,7 @@ namespace AddStudentsUsingList
 
             {
                 Console.WriteLine("Welcome to our C# class.");
-                //Loop through list to display names, for example: 1. Ilona
+                //Loop through list to display names, for example: 1. Leonardo
                 //student.Name -> Sort();
                 for (int i = 0; i < student.Count; i++)
                 {
@@ -47,6 +47,8 @@ namespace AddStudentsUsingList
                         if (knowMoreAboutStudent == "yes")
                         {
                             GetInfo(student, Number);
+                            //moreAboutStudent = false;
+                            //playAgain = false;
                         }
 
                         else if (knowMoreAboutStudent == "no")
@@ -70,7 +72,7 @@ namespace AddStudentsUsingList
             }
         }
 
-        //Validator method is used to validate if user entered a number and to accomondate for any other errors
+        //TestValidity method is used to validate if user entered a number and to accomondate for any other errors
         public static int TestValidity(List<StudentInfo> userInput)
         {
             bool repeatIntValidation = true;
@@ -83,7 +85,7 @@ namespace AddStudentsUsingList
                 {
                     string stringUserInput = Console.ReadLine();
 
-                    //Converted to integer and added -1 to count user input starting from 1 instead of 2. Example: typed in 1, Michael appears as 1.
+                    //Converted to integer and added -1 to count user input starting from 1 instead of 2
                     intUserInput = int.Parse(stringUserInput) - 1;
 
                     repeatIntValidation = false;
@@ -144,6 +146,8 @@ namespace AddStudentsUsingList
 
         public static void GetInfo(List<StudentInfo> student, int intUserInput)
         {
+            bool moreAboutStudent = true;
+            bool playAgain = true;
             bool repeat = true;
             while (repeat)
             {
@@ -157,18 +161,25 @@ namespace AddStudentsUsingList
                     if (userInputOptions == "hometown")
                     {
                         Console.WriteLine($"{student[intUserInput].Name} is from {student[intUserInput].HomeTown}.");
+                       repeat = false;
+                        moreAboutStudent = true;
+                        playAgain = false;
+
                     }
                     else if (userInputOptions == "favorite food")
                     {
                         Console.WriteLine($"{student[intUserInput].Name} likes {student[intUserInput].Food}.");
+                       repeat = false;
                     }
                     else if (userInputOptions == "favorite color")
                     {
                         Console.WriteLine($"{student[intUserInput].Name} likes {student[intUserInput].FavoriteColor}.");
+                       repeat = false;
                     }
                     else
                     {
                         Console.WriteLine("That data does not exist. Please try again. (enter “hometown” or “favorite food or favorite color or number”)");
+
                     }
                 }
                 catch (FormatException) //Used when the user typed in in a wrong format
@@ -193,36 +204,23 @@ namespace AddStudentsUsingList
 
         public static void UserPrompts(List<StudentInfo> student, int intUserInput)
         {
-            bool moreAboutStudent = true;
-            bool playAgain = true;
-            //If answered no and the user dont want to get to know the same user,
-            //they can choose another student or add a new student to the end of the list
-            Console.WriteLine("Would you like to know more about other students? (yes or no)");
-            string userContinue = Console.ReadLine().ToLower();
 
-            if (userContinue == "yes" || userContinue == "y")
+
+            Console.WriteLine("would you like to add a new student? (yes or no)");
+            string userToAdd = Console.ReadLine().ToLower();
+
+            if (userToAdd == "yes" || userToAdd == "y")
             {
-                moreAboutStudent = false;
-                playAgain = true;
+                AddStudent(student, intUserInput);
+
             }
-            else if (userContinue == "no" || userContinue == "n")
+            else if (userToAdd == "no" || userToAdd == "n")
             {
-                Console.WriteLine("would you like to add a new student? (yes or no)");
-                string userToAdd = Console.ReadLine().ToLower();
+                Console.WriteLine("Goodbye");
 
-                if (userToAdd == "yes" || userToAdd == "y")
-                {
-                    AddStudent(student, intUserInput);
-                    moreAboutStudent = false;
-                    playAgain = false;
-                }
-                else if (userToAdd == "no" || userToAdd == "n")
-                {
-                    Console.WriteLine("Goodbye");
-                    moreAboutStudent = false;
-                }
             }
         }
+
         public static void AddStudent(List<StudentInfo> student, int intUserInput)
         {
             bool addInputAgain = true;
@@ -283,6 +281,3 @@ namespace AddStudentsUsingList
         }
     }
 }
-
-
-
